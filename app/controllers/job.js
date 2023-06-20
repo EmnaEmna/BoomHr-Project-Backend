@@ -387,6 +387,8 @@ export function getTopCandidatesForJob(req, res) {
           skills: { $regex: new RegExp(skill, "i") },
         })),
       })
+      .populate({ path: 'status', select: 'name' }) // populate the status field with the matching document's name property
+
         .then((candidates) => {
           console.log("Found candidates:", candidates);
 
@@ -405,9 +407,12 @@ export function getTopCandidatesForJob(req, res) {
 
             return {
               _id: candidate._id,
-    
+              name: candidate.name,
+              email: candidate.email,
+              phone: candidate.phone,
               candidate: candidate,
               matchScore: matchScore,
+              status: candidate.status.name, // return the name property of the status object
             };
           });
 
