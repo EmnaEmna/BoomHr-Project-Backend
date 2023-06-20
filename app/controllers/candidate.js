@@ -525,8 +525,8 @@ let transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: 'hrmangerp@gmail.com', // replace with your email address
-    pass: 'hvoxyigokbgfeuxx' // replace with your email password
+    user: '************************', // replace with your email address
+    pass: '****************' // replace with your email password
   }
 });
 
